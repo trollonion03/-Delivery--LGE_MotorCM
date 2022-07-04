@@ -1,2 +1,2 @@
-# -Delivery-LGE_MotorCM_for_Delivery
+# -Delivery-LGE_MotorCM
 This repository is for delivery
