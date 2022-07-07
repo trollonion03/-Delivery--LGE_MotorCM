@@ -6,9 +6,9 @@ Unicode true
 ; define const
 
 !define APP_NAME "LGE_MOTORCM"
-!define APP_DIR "MOTORCM"
-!define FILE_VERSION "0.4.2.0"
-!define PRODUCT_VERSION "0.4.2.0"
+!define APP_DIR "MOTORCM_KOR"
+!define FILE_VERSION "0.4.2.7"
+!define PRODUCT_VERSION "0.4.2.7"
 !define MANUFACTURER "LGE"
 !define REG_APP_NAME "LGE_MOTORCM"
 !define REG_HKLM_UNINST "Software\Microsoft\Windows\CurrentVersion\Uninstall"
@@ -17,9 +17,9 @@ Unicode true
 
 Name "${APP_NAME}"
 
-OutFile "LG_MOTORCM.exe"
+OutFile "LG_MOTORCM_KOR.exe"
 
-InstallDir "$PROGRAMFILES32\LG_Motor_2022"
+InstallDir "$PROGRAMFILES32\LG_Motor_2022_KOR"
 
 #XPStyle on
 
@@ -84,9 +84,10 @@ DetailPrint "register uninstall information"
 WriteUninstaller "${APP_DIR}\uninstall.exe"
 
 SetShellVarContext all 
-CreateDirectory $SMPROGRAMS\TESTAPP
+CreateDirectory $SMPROGRAMS\LGE_MOTORCM
 SetOutPath "$INSTDIR\${APP_DIR}"
 CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\TESTAPP_UNINSTALL.lnk" "$INSTDIR\${APP_DIR}\uninstall.exe"
+CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\LGE_MOTORCM_KOR.lnk" "$INSTDIR\${APP_DIR}\MotorCM_daemon_Re\program\USBctrl1220_Threaded.exe"
 
 WriteRegStr HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}" "DisplayName" "${APP_NAME}"
 WriteRegStr HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}" "DisplayIcon" "$INSTDIR\${APP_DIR}\uninstall.exe"
