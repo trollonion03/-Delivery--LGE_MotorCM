@@ -86,8 +86,9 @@ WriteUninstaller "${APP_DIR}\uninstall.exe"
 SetShellVarContext all 
 CreateDirectory $SMPROGRAMS\TESTAPP
 SetOutPath "$INSTDIR\${APP_DIR}"
-CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\TESTAPP_UNINSTALL.lnk" "$INSTDIR\${APP_DIR}\uninstall.exe"
-CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\LGE_MOTORCM_ENG.lnk" "$INSTDIR\${APP_DIR}\MotorCM_daemon_Re\program\USBctrl1220_Threaded.exe"
+CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\MOTORCM_ENG_UNINSTALL.lnk" "$INSTDIR\${APP_DIR}\uninstall.exe"
+SetOutPath "$INSTDIR\${APP_DIR}\MotorCM_daemon_Re\program"
+CreateShortCut "$SMPROGRAMS\LGE_MOTORCM_ENG.lnk" "$INSTDIR\${APP_DIR}\MotorCM_daemon_Re\program\USBctrl1220_Threaded.exe"
 
 WriteRegStr HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}" "DisplayName" "${APP_NAME}"
 WriteRegStr HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}" "DisplayIcon" "$INSTDIR\${APP_DIR}\uninstall.exe"
@@ -104,7 +105,7 @@ RMDir /r "$INSTDIR\*"
 RMDir "$INSTDIR"
 SetShellVarContext all
 RMDir /r "$STARTMENU\${APP_NAME}"
-Delete "$SMPROGRAMS\LGE_MOTORCM\TESTAPP.lnk"
+Delete "$SMPROGRAMS\LGE_MOTORCM_ENG.lnk"
 Delete "$SMPROGRAMS\LGE_MOTORCM\TESTAPP_UNINSTALL.lnk"
 DeleteRegKey HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}"
 SectionEnd

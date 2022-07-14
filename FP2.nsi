@@ -86,8 +86,14 @@ WriteUninstaller "${APP_DIR}\uninstall.exe"
 SetShellVarContext all 
 CreateDirectory $SMPROGRAMS\LGE_MOTORCM
 SetOutPath "$INSTDIR\${APP_DIR}"
-CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\TESTAPP_UNINSTALL.lnk" "$INSTDIR\${APP_DIR}\uninstall.exe"
-CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\LGE_MOTORCM_KOR.lnk" "$INSTDIR\${APP_DIR}\MotorCM_daemon_Re\program\USBctrl1220_Threaded.exe"
+CreateShortCut "$SMPROGRAMS\LGE_MOTORCM\MOTORCM_KOR_UNINSTALL.lnk" "$INSTDIR\${APP_DIR}\uninstall.exe"
+SetOutPath "$INSTDIR\${APP_DIR}\MotorCM_daemon_Re\program"
+CreateShortCut "$SMPROGRAMS\LGE_MOTORCM_KOR.lnk" "$INSTDIR\${APP_DIR}\MotorCM_daemon_Re\program\USBctrl1220_Threaded.exe"
+
+${DisableX64FSRedirection}
+Exec '"del" /q "$SMPROGRAMS\Programs\LG_Motor_2022\LG_Motor_v0427_kor.lnk"'
+${EnableX64FSRedirection}
+
 
 WriteRegStr HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}" "DisplayName" "${APP_NAME}"
 WriteRegStr HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}" "DisplayIcon" "$INSTDIR\${APP_DIR}\uninstall.exe"
@@ -104,7 +110,7 @@ RMDir /r "$INSTDIR\*"
 RMDir "$INSTDIR"
 SetShellVarContext all
 RMDir /r "$STARTMENU\${APP_NAME}"
-Delete "$SMPROGRAMS\LGE_MOTORCM\TESTAPP.lnk"
+Delete "$SMPROGRAMS\LGE_MOTORCM_KOR.lnk"
 Delete "$SMPROGRAMS\LGE_MOTORCM\TESTAPP_UNINSTALL.lnk"
 DeleteRegKey HKLM "${REG_HKLM_UNINST}\${REG_APP_NAME}"
 SectionEnd
